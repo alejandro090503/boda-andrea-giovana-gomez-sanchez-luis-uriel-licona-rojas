@@ -1346,6 +1346,27 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   .mn-full.on{opacity:1}
 }
 
+/* ── FLORES: esquinas de tarjetas + separadores ───────── */
+.loc-float{position:relative}
+.fam-padcard,.hotel-card--pending,.rsvp-gracias{position:relative}
+.hotel-card--pending,.rsvp-gracias{overflow:hidden}
+.flor-esq{position:absolute;width:118px;height:auto;pointer-events:none;z-index:4;
+  --sx:1;--sy:1;transform:scale(var(--sx),var(--sy));transform-origin:center;
+  animation:florSway 7s ease-in-out infinite}
+.flor-esq.sm{width:92px}
+.flor-esq.tl{top:-26px;left:-22px}
+.flor-esq.tr{top:-26px;right:-22px;--sx:-1}
+.flor-esq.br{bottom:-24px;right:-20px;--sx:-1;--sy:-1}
+.flor-esq.in.tl{top:-6px;left:-6px}
+.flor-esq.in.br{bottom:-6px;right:-6px}
+.loc-float:nth-child(2) .flor-esq{animation-delay:-3.5s}
+@keyframes florSway{0%,100%{transform:scale(var(--sx),var(--sy)) rotate(0deg)}50%{transform:scale(var(--sx),var(--sy)) rotate(1.6deg) translateY(-3px)}}
+.flor-sep{display:block;width:min(78%,320px);height:auto;margin:34px auto 0;pointer-events:none}
+.fam-pad-intro + *{margin-top:0}
+#family .flor-sep{margin:6px auto 22px}
+.ft-roses img{object-position:center center}
+@media (prefers-reduced-motion:reduce){.flor-esq{animation:none}}
+
 /* ── REDUCED MOTION ───────────────────────────────────── */
 @media(prefers-reduced-motion:reduce){
   .lbl,.wind-orn,.gline::after,.loc-block,.fam-card,.vinyl-btn{animation:none!important;transition:none!important;}
@@ -1489,6 +1510,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <div class="gline"></div>
   <div class="loc-list">
     <div class="loc-float">
+    <img class="flor-esq tl" src="flores/esquina.webp" alt="" aria-hidden="true">
     <div class="loc-unified loc-card">
       <div class="loc-card-head" aria-hidden="true"><span class="loc-card-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="24" y1="4" x2="24" y2="10"/>
@@ -1515,6 +1537,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     </div>
     </div>
     <div class="loc-float">
+    <img class="flor-esq tr" src="flores/esquina.webp" alt="" aria-hidden="true">
     <div class="loc-unified loc-card">
       <div class="loc-card-head" aria-hidden="true"><span class="loc-card-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 6 L11 22 L18 22 Z"/>
@@ -1558,6 +1581,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
     Agregar a calendario
   </a>
+  <img class="flor-sep" src="flores/separador.webp" alt="" aria-hidden="true">
 </section>
 
 
@@ -1568,6 +1592,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <div class="gline"></div>
   <div class="hotels-wrap">
     <div class="hotel-card hotel-card--pending">
+      <img class="flor-esq tl sm in" src="flores/esquina.webp" alt="" aria-hidden="true">
       <div class="hotel-body">
         <span class="hotel-eyebrow">Hoteles sugeridos</span>
         <h3 class="hotel-name">Por confirmar</h3>
@@ -1786,12 +1811,13 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
   <p class="gifts-sub">Tu presencia es nuestro mejor regalo.<br>Si además deseas tener un detalle con nosotros,<br>con gusto recibiremos tu sobre el día de la boda.</p>
 
   <!-- Lluvia de sobres -->
-  <div class="gift-card" style="max-width:340px;margin:0 auto;padding:24px 22px;background:#f3f6fa;border:1px solid var(--hair);border-radius:14px;text-align:center;">
+  <div class="gift-card" style="position:relative;max-width:340px;margin:0 auto;padding:24px 22px;background:#f3f6fa;border:1px solid var(--hair);border-radius:14px;text-align:center;">
     <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;color:var(--peach-accent);">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3 7l9 7 9-7"/></svg>
       <span style="font-family:'Lato',sans-serif;font-size:11px;letter-spacing:3px;text-transform:uppercase;font-weight:700;">Lluvia de sobres</span>
     </div>
     <p style="font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--cream);line-height:1.55;margin:0;">Habrá un buzón en la recepción para que deposites tu sobre.</p>
+    <img class="flor-esq br sm in" src="flores/esquina.webp" alt="" aria-hidden="true">
   </div>
 
 </section>
@@ -1814,6 +1840,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     </a>
   </div>
   <p class="alb-hint album-aviso">El álbum se habilita el día de la boda. Regresa aquí y sube todas tus fotos de la noche.</p>
+  <img class="flor-sep" src="flores/separador.webp" alt="" aria-hidden="true">
 </section>
 
 
@@ -1897,11 +1924,13 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 
   <div class="fam-orn">✦</div>
 
+  <img class="flor-sep" src="flores/separador.webp" alt="" aria-hidden="true">
   <p class="fam-pad-intro">Porque son parte de nuestras vidas, es nuestro deseo que compartan con nosotros este día tan especial.</p>
   <p class="fam-pad-header">Nuestros Padrinos</p>
 
   <div style="display:flex;flex-direction:column;gap:14px;max-width:320px;margin:0 auto;">
     <div class="fam-padcard">
+      <img class="flor-esq tr sm" src="flores/esquina.webp" alt="" aria-hidden="true">
       <span class="fam-padcard-role">Padrinos</span>
       <p class="fam-padcard-name">Lea Sánchez León</p>
       <p class="fam-padcard-name">Gustavo Osornio Valencia</p>
@@ -1960,6 +1989,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
     </div>
 
     <div class="rsvp-gracias" id="rsvpGracias" style="display:none">
+      <img class="flor-esq tl sm in" src="flores/esquina.webp" alt="" aria-hidden="true">
       <svg class="rsvp-gracias-icon" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="8.5 12.5 11 15 16 9.5"/></svg>
       <p class="rsvp-gracias-title" id="rsvpGraciasTitle"></p>
       <p class="rsvp-gracias-sub" id="rsvpGraciasSub"></p>
@@ -2234,6 +2264,7 @@ function scrollAnims() {
     gsap.fromTo('#wheel-scene', {y:50}, {y:-30, ease:'none', scrollTrigger:{ trigger:'#gallery', start:'top bottom', end:'bottom top', scrub:true }});
     gsap.fromTo('#gallery .gal-hint', {y:30}, {y:-10, ease:'none', scrollTrigger:{ trigger:'#gallery', start:'top bottom', end:'bottom top', scrub:true }});
   }
+  document.querySelectorAll('.flor-sep').forEach(function(f){ onView(f, function(){ enter([f], {opacity:0,scale:.85}, {opacity:1,scale:1,duration:1,ease:'power2.out'}); }, 'top 92%'); });
   /* Familia: nombre por nombre */
   onView('#family .fam-parents', function(){ enter('.fam-parent-role, .fam-parent-names > span', {opacity:0,y:14}, {opacity:1,y:0,duration:.6,stagger:.08,ease:ease}); }, 'top 85%');
   onView('#family .fam-padcard', function(){ enter('.fam-padcard-role, .fam-padcard-name', {opacity:0,y:14}, {opacity:1,y:0,duration:.6,stagger:.1,ease:ease}); }, 'top 88%');
