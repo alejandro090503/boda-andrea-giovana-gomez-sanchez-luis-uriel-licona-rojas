@@ -1288,6 +1288,7 @@ section.has-sec-waves{padding-top:84px;padding-bottom:86px}
 .mn-ind{position:absolute;left:0;top:50%;height:40px;width:100px;margin-top:-20px;border-radius:999px;background:var(--peach-accent);
   transform-origin:left center;transition:transform .5s cubic-bezier(.2,.8,.2,1),opacity .3s;opacity:0;z-index:0}
 .mn-sep{width:1px;height:22px;background:rgba(57,90,127,.25);margin:0 4px}
+@media (max-width:1023px){.mn-sep{display:none}}
 .mn-share,.mn-open{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-width:44px;height:44px;border-radius:999px;border:none;cursor:pointer;
   font-family:'Lato',sans-serif;font-size:12px;font-weight:700;letter-spacing:2px;text-transform:uppercase}
 .mn-share{background:transparent;color:var(--peach-accent)}
@@ -1462,6 +1463,81 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
 .petal-layer{position:fixed;inset:0;pointer-events:none;z-index:-1;overflow:hidden}
 .petal{position:absolute;top:-60px;left:0;will-change:transform;opacity:.9}
 @media (prefers-reduced-motion:reduce){.flor-rama,.flor-vine,.flor-swag,.sec-medal::before{animation:none}.petal-layer{display:none}}
+
+/* ============================================================
+   HERO PREMIUM: deriva lenta, destellos cálidos, barrido de lente,
+   polvo de luz y viñeta. Todo anima solo transform / opacity.
+   ============================================================ */
+#hero{justify-content:flex-end!important;padding:0 24px!important}
+.h-bg{top:-14%!important;bottom:-14%!important;left:0;right:0;overflow:hidden}
+.hero-drift{position:absolute;inset:0;background:url('fotos-cliente/stock-hero.jpg') center 30%/cover no-repeat;
+  animation:heroDrift 20s ease-in-out infinite alternate;transform-origin:50% 45%}
+@keyframes heroDrift{from{transform:translate(-2%,-1.5%) scale(1.04)}to{transform:translate(2%,1.5%) scale(1.16)}}
+.h-glow{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;mix-blend-mode:screen}
+.h-glow .fl{position:absolute;border-radius:50%;opacity:.35;
+  background:radial-gradient(circle,rgba(255,236,205,.35) 0%,rgba(255,236,205,.12) 38%,rgba(255,236,205,0) 68%);
+  animation:flMove 28s ease-in-out infinite alternate,flBreathe 7s ease-in-out infinite}
+.h-glow .f1{width:70%;aspect-ratio:1;left:-12%;top:6%}
+.h-glow .f2{width:55%;aspect-ratio:1;right:-10%;top:24%;animation-duration:32s,8s;animation-delay:-6s,-2s}
+.h-glow .f3{width:48%;aspect-ratio:1;left:28%;top:48%;animation-duration:24s,6.5s;animation-delay:-12s,-4s}
+.h-glow .f4{width:40%;aspect-ratio:1;left:4%;top:62%;animation-duration:30s,9s;animation-delay:-18s,-1s}
+@keyframes flMove{0%{transform:translate(0,0)}50%{transform:translate(9%,-6%)}100%{transform:translate(-6%,7%)}}
+@keyframes flBreathe{0%,100%{opacity:.25}50%{opacity:.55}}
+.h-lens{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;mix-blend-mode:soft-light}
+.h-lens span{position:absolute;top:-10%;bottom:-10%;left:0;width:38%;opacity:0;
+  background:linear-gradient(100deg,transparent 0%,rgba(255,250,235,.9) 50%,transparent 100%);
+  animation:lensSweep 12s ease-in-out infinite}
+@keyframes lensSweep{0%{transform:translateX(-120%);opacity:0}6%{opacity:.18}30%{transform:translateX(320%);opacity:.18}34%,100%{transform:translateX(320%);opacity:0}}
+.h-dust{position:absolute;inset:0;z-index:2;pointer-events:none;overflow:hidden}
+.h-dust i{position:absolute;border-radius:50%;background:#f6e7c1;box-shadow:0 0 6px rgba(246,231,193,.8);opacity:var(--o,.5);
+  animation-name:dustRise,dustTwinkle;animation-timing-function:linear,ease-in-out;animation-iteration-count:infinite,infinite}
+@keyframes dustRise{from{transform:translateY(0)}to{transform:translateY(-60vh)}}
+@keyframes dustTwinkle{0%,100%{opacity:calc(var(--o,.5)*.4)}50%{opacity:var(--o,.5)}}
+.h-ov{z-index:3!important;background:
+  linear-gradient(to top,#f3f6fa 0,rgba(243,246,250,.85) 22px,rgba(243,246,250,0) 90px),
+  linear-gradient(to top,rgba(10,22,40,.78) 0%,rgba(10,22,40,.5) 24%,rgba(10,22,40,0) 50%),
+  radial-gradient(ellipse 95% 80% at 50% 45%,rgba(0,0,0,0) 55%,rgba(6,14,28,.42) 100%)!important}
+.h-cnt{margin-top:0!important;padding-bottom:110px;z-index:4!important;width:100%}
+.h-names{font-family:'Le Major','Bodoni Moda',serif;font-weight:400;color:#fff;line-height:1.05;
+  font-size:clamp(44px,13vw,62px);display:flex;flex-direction:column;align-items:center;gap:0;
+  text-shadow:0 2px 24px rgba(0,0,0,.45)}
+.h-amp{font-family:'Great Vibes',cursive;font-size:.7em;line-height:.9;color:#f3e6c8;padding:.12em .3em;margin:-.12em -.3em}
+.h-meta{margin-top:16px;line-height:1.7;font-family:'Lato',sans-serif;font-weight:700;font-size:13px;letter-spacing:3.5px;text-transform:uppercase;
+  color:rgba(255,255,255,.95);text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.h-scroll{z-index:4!important}
+@media (prefers-reduced-motion:reduce){.hero-drift,.h-glow .fl,.h-lens span,.h-dust{animation:none!important}.h-dust{display:none}}
+
+/* ============================================================
+   CÓDIGO DE VESTIMENTA: dibujos en 2 columnas (sin botones)
+   ============================================================ */
+.dc-figs{display:grid;grid-template-columns:1fr 1fr;gap:14px;max-width:360px;margin:12px auto 30px;align-items:end}
+.dc-fig{margin:0;display:flex;flex-direction:column;align-items:center}
+.dc-fig-art{position:relative;height:300px;display:flex;align-items:flex-end;justify-content:center;
+  animation:dcFloat 6.5s ease-in-out infinite;transform-origin:50% 100%}
+.dc-fig:nth-child(2) .dc-fig-art{animation-delay:-2.2s}
+.dc-fig-art::before{content:'';position:absolute;left:50%;bottom:-6px;width:150%;height:92%;transform:translateX(-50%);
+  background:radial-gradient(ellipse 50% 50% at 50% 55%,rgba(232,238,245,.55) 0%,rgba(232,238,245,.18) 45%,rgba(232,238,245,0) 72%);z-index:0}
+.dc-fig-art img{position:relative;z-index:1;max-height:100%;max-width:100%;object-fit:contain;filter:drop-shadow(0 10px 12px rgba(6,14,28,.35))}
+@keyframes dcFloat{0%,100%{transform:translateY(0) rotate(-.6deg)}50%{transform:translateY(-9px) rotate(.6deg)}}
+.dc-fig figcaption{margin-top:14px;display:flex;flex-direction:column;gap:4px;text-align:center}
+.dc-fig figcaption b{font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:600;font-size:24px;color:#fff;line-height:1.1}
+.dc-fig figcaption span{font-family:'Lato',sans-serif;font-weight:700;font-size:13px;letter-spacing:2.4px;text-transform:uppercase;color:#d6e0ec}
+@media (prefers-reduced-motion:reduce){.dc-fig-art{animation:none}}
+
+/* ============================================================
+   ORNAMENTOS MÁS GRANDES
+   ============================================================ */
+.flor-sep{width:min(96%,440px)!important;margin:30px auto 0!important}
+.gline{width:120px!important;height:1.5px}
+.wind-orn{font-size:9px!important}
+.wind-orn::before,.wind-orn::after{max-width:60px}
+.fam-orn{max-width:280px!important;font-size:15px!important}
+.flor-swag{width:min(96%,400px)!important}
+.flor-esq.sm{width:116px}
+.flor-rama{width:120px}
+.hotel-card--pending .flor-rama.br{width:104px}
+.flor-rama.qr{width:136px;bottom:-40px;right:-46px}
+.flor-vine{width:54px}
   </style>
 </head>
 <body>
@@ -1515,7 +1591,6 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
 
 <!-- MENÚ DE SECCIONES -->
 <nav class="mn-pill" id="mnPill" aria-label="Secciones">
-  <a class="mn-mono" href="#hero" data-mn="hero" aria-label="Inicio">A<i>&amp;</i>U</a>
   <div class="mn-links" id="mnLinks"><span class="mn-ind" id="mnInd" aria-hidden="true"></span></div>
   <span class="mn-sep" aria-hidden="true"></span>
   <button class="mn-share" id="mnShare" type="button" aria-label="Compartir invitación">
@@ -1537,12 +1612,14 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
 
 <!-- ═══════════════ 1. HERO ════════════════════════════ -->
 <section id="hero">
-  <div class="h-bg" id="heroBg">
-    <img src="fotos-cliente/foto-3.jpg" alt="Andrea y Uriel" loading="eager">
-  </div>
+  <div class="h-bg" id="heroBg"><i class="hero-drift" role="img" aria-label="Andrea y Uriel"></i></div>
+  <div class="h-glow" aria-hidden="true"><span class="fl f1"></span><span class="fl f2"></span><span class="fl f3"></span><span class="fl f4"></span></div>
+  <div class="h-lens" aria-hidden="true"><span></span></div>
+  <div class="h-dust" id="hDust" aria-hidden="true"></div>
   <div class="h-ov"></div>
   <div class="h-cnt" id="hCnt">
-    <p class="h-monogram" id="hMono"><span class="mono-k">A</span><span class="mono-amp">&amp;</span><span class="mono-m">U</span></p>
+    <h1 class="h-names"><span class="h-n">Andrea</span><span class="h-amp">&amp;</span><span class="h-n">Uriel</span></h1>
+    <p class="h-meta">Ciudad de México<br>09 · 10 · 2027</p>
   </div>
   <div class="h-scroll" id="hScroll">
     <div class="h-scroll-line"></div>
@@ -1603,7 +1680,6 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
   <div class="gline"></div>
   <div class="loc-list">
     <div class="loc-float">
-    <img class="flor-esq big tl" src="flores/esq-grande.webp" alt="" aria-hidden="true">
     <div class="loc-unified loc-card">
       <div class="loc-card-head" aria-hidden="true"><span class="loc-card-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
                 <line x1="24" y1="4" x2="24" y2="10"/>
@@ -1630,7 +1706,6 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
     </div>
     </div>
     <div class="loc-float">
-    <img class="flor-esq big tr" src="flores/esq-grande.webp" alt="" aria-hidden="true">
     <div class="loc-unified loc-card">
       <div class="loc-card-head" aria-hidden="true"><span class="loc-card-ico"><svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 6 L11 22 L18 22 Z"/>
@@ -1659,7 +1734,6 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
     </div>
     </div>
   </div>
-  <img class="flor-base" src="flores/base.webp" alt="" aria-hidden="true">
 </section>
 
 
@@ -1701,7 +1775,6 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
 <!-- ═══════════════ 5. ITINERARIO ════════════════════ -->
 <section id="itinerary">
   <div class="sec-bg sec-bg--tex" aria-hidden="true"></div>
-  <img class="flor-vine left" src="flores/enredadera.webp" alt="" aria-hidden="true">
   <div class="it-inner">
   <p class="it-title">Itinerario</p>
   <div class="it-timeline">
@@ -1822,55 +1895,15 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
   <div class="gline dc-gline"></div>
   <p class="dc-note">Acompáñanos vestido para la ocasión</p>
 
-  <div class="dc-looks">
-    <button class="dc-look" type="button" data-look="caballeros" aria-label="Ver ideas de vestimenta para caballeros">
-      <span class="dc-look-ico" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M8 3l4 3 4-3 3 2.2c1.2.9 1.9 2.3 1.9 3.8V21H3V9c0-1.5.7-2.9 1.9-3.8L8 3z"/>
-          <path d="M12 6v15"/><path d="M9.4 4.2L12 9l2.6-4.8"/>
-        </svg>
-      </span>
-      <span class="dc-look-txt">
-        <span class="dc-look-rol">Caballeros</span>
-        <span class="dc-look-cta">Ver ideas</span>
-      </span>
-      <span class="dc-look-arrow" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-      </span>
-    </button>
-
-    <button class="dc-look" type="button" data-look="damas" aria-label="Ver ideas de vestimenta para damas">
-      <span class="dc-look-ico" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M9 3h6l-1.4 5.2L21 21H3l7.4-12.8L9 3z"/><path d="M10.6 8.2h2.8"/>
-        </svg>
-      </span>
-      <span class="dc-look-txt">
-        <span class="dc-look-rol">Damas</span>
-        <span class="dc-look-cta">Ver ideas</span>
-      </span>
-      <span class="dc-look-arrow" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-      </span>
-    </button>
-  </div>
-
-  <div class="dc-viewer" id="dcViewer" role="dialog" aria-modal="true" aria-label="Ideas de vestimenta" hidden>
-    <div class="dcv-box">
-      <button class="dc-viewer-close" id="dcViewerClose" type="button" aria-label="Cerrar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-      <p class="dcv-head" id="dcvHead"></p>
-      <div class="dcv-viewport"><div class="dcv-track" id="dcvTrack"></div></div>
-      <button class="dcv-nav dcv-prev" id="dcvPrev" type="button" aria-label="Anterior">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>
-      </button>
-      <button class="dcv-nav dcv-next" id="dcvNext" type="button" aria-label="Siguiente">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
-      </button>
-      <p class="dcv-cap" id="dcvCap"></p>
-      <div class="dcv-dots" id="dcvDots"></div>
-    </div>
+  <div class="dc-figs">
+    <figure class="dc-fig">
+      <div class="dc-fig-art"><img src="looks/caballero.png" alt="Caballero con traje formal negro"></div>
+      <figcaption><b>Caballeros</b><span>Traje formal</span></figcaption>
+    </figure>
+    <figure class="dc-fig">
+      <div class="dc-fig-art"><img src="looks/dama.png" alt="Dama con vestido largo formal"></div>
+      <figcaption><b>Damas</b><span>Vestido formal</span></figcaption>
+    </figure>
   </div>
 
   <div class="dc-avoid-block">
@@ -1953,12 +1986,11 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
 
   <div class="wheel-scene" id="wheel-scene">
     <div class="wheel-ring" id="wheel-ring">
-      <div class="wheel-card"><img src="fotos-cliente/foto-1.jpg" alt="Andrea y Uriel" loading="lazy"></div>
-      <div class="wheel-card"><img src="fotos-cliente/foto-2.jpg" alt="Andrea y Uriel" loading="lazy"></div>
-      <div class="wheel-card"><img src="fotos-cliente/foto-7.jpg" alt="Andrea y Uriel" loading="lazy"></div>
-      <div class="wheel-card"><img src="fotos-cliente/foto-4.jpg" alt="Andrea y Uriel" loading="lazy"></div>
-      <div class="wheel-card"><img src="fotos-cliente/foto-5.jpg" alt="Andrea y Uriel" loading="lazy"></div>
-      <div class="wheel-card"><img src="fotos-cliente/foto-6.jpg" alt="Andrea y Uriel" loading="lazy"></div>
+      <div class="wheel-card"><img src="fotos-cliente/stock-foto-1.jpg" alt="Andrea y Uriel"></div>
+      <div class="wheel-card"><img src="fotos-cliente/stock-foto-2.jpg" alt="Andrea y Uriel"></div>
+      <div class="wheel-card"><img src="fotos-cliente/stock-foto-3.jpg" alt="Andrea y Uriel"></div>
+      <div class="wheel-card"><img src="fotos-cliente/stock-foto-4.jpg" alt="Andrea y Uriel"></div>
+      <div class="wheel-card"><img src="fotos-cliente/stock-foto-5.jpg" alt="Andrea y Uriel"></div>
     </div>
   </div>
   <p class="gal-hint">Arrastra para girar</p>
@@ -2026,17 +2058,14 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
 
   <div class="fam-orn">✦</div>
 
-  <img class="flor-sep" src="flores/separador.webp" alt="" aria-hidden="true">
   <p class="fam-pad-intro">Porque son parte de nuestras vidas, es nuestro deseo que compartan con nosotros este día tan especial.</p>
   <p class="fam-pad-header">Nuestros Padrinos</p>
 
   <div style="display:flex;flex-direction:column;gap:14px;max-width:320px;margin:0 auto;">
     <div class="fam-padcard">
-      <img class="flor-esq tr sm" src="flores/esquina.webp" alt="" aria-hidden="true">
       <span class="fam-padcard-role">Padrinos</span>
       <p class="fam-padcard-name">Lea Sánchez León</p>
       <p class="fam-padcard-name">Gustavo Osornio Valencia</p>
-      <img class="flor-rama bl" src="flores/esq-rama.webp" alt="" aria-hidden="true">
     </div>
   </div>
 
@@ -2101,7 +2130,6 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
     </div>
 
     <p id="rsvp-feedback"></p>
-    <img class="flor-base sm" src="flores/base.webp" alt="" aria-hidden="true">
   </div>
 </section>
 
@@ -2230,15 +2258,10 @@ function toast(msg) {
 
 /* ── HERO ────────────────────────────────────────────── */
 function heroAnim() {
-  gsap.set('#hMono', { opacity:0, scale:.85 });
-  gsap.set('#hScroll', { opacity:0 });
   gsap.timeline({ defaults:{ ease:'power3.out' } })
-    .to('#hMono',  { opacity:1, scale:1, duration:1.2 }, .2)
-    .to('#hScroll',{ opacity:1, duration:.5 }, 1.4);
-  gsap.to('#heroBg', {
-    yPercent:22, ease:'none',
-    scrollTrigger:{ trigger:'#hero', start:'top top', end:'bottom top', scrub:true }
-  });
+    .fromTo('.h-n, .h-amp', { opacity:0, y:26 }, { opacity:1, y:0, duration:1.2, stagger:.18, clearProps:'transform' }, .2)
+    .fromTo('.h-meta', { opacity:0, y:14 }, { opacity:1, y:0, duration:.9 }, .9)
+    .fromTo('#hScroll',{ opacity:0 }, { opacity:1, duration:.5 }, 1.4);
 }
 
 /* ── PARTÍCULAS BOKEH AZUL ───────────────────────────── */
@@ -2346,7 +2369,7 @@ function scrollAnims() {
   });
   /* Dress code */
   onView('#dresscode', function(){
-    enter('.dc-note, .dc-look', {opacity:0,y:22}, {opacity:1,y:0,duration:.75,stagger:.14,ease:ease});
+    enter('.dc-note, .dc-fig', {opacity:0,y:22}, {opacity:1,y:0,duration:.75,stagger:.14,ease:ease});
     enter('.dc-avoid-block, .dc-msg, .kids-policy', {opacity:0,y:16}, {opacity:1,y:0,duration:.6,stagger:.12,delay:.35,ease:ease});
   }, 'top 75%');
   /* Regalos: destello */
@@ -2379,8 +2402,9 @@ function scrollAnims() {
   onView('#footer', function(){ enter('.ft-msg, .ft-nofaltes, .ft-date', {opacity:0,y:24}, {opacity:1,y:0,duration:.8,stagger:.15,ease:ease}); }, 'top 88%');
   /* Hero al hacer scroll: la foto se acerca, el monograma sube y se desvanece */
   if(!RM){
-    gsap.fromTo('#heroBg', {scale:1}, {scale:1.08, ease:'none', scrollTrigger:{ trigger:'#hero', start:'top top', end:'bottom top', scrub:true }});
-    gsap.fromTo('#hCnt', {y:0,opacity:1}, {y:-90,opacity:0, ease:'none', immediateRender:false, scrollTrigger:{ trigger:'#hero', start:'top top', end:'70% top', scrub:true }});
+    /* la foto SOLO sube un poco (sin blur/brillo/opacidad); los textos suben, se desvanecen y se difuminan */
+    gsap.fromTo('#heroBg', {y:0}, {y:-70, ease:'none', scrollTrigger:{ trigger:'#hero', start:'top top', end:'bottom top', scrub:true }});
+    gsap.fromTo('#hCnt', {y:0,opacity:1,filter:'blur(0px)'}, {y:-110,opacity:0,filter:'blur(10px)', ease:'none', immediateRender:false, scrollTrigger:{ trigger:'#hero', start:'top top', end:'65% top', scrub:true }});
   }
   /* Contador: tick en cada cambio de número */
   document.querySelectorAll('.cd-num').forEach(function(n){
@@ -2975,6 +2999,19 @@ function initWheel(){
         onComplete: function(){ p.remove(); alive--; } });
   }
   setInterval(spawn, 1500);
+})();
+
+/* ── HERO: polvo de luz (16 partículas, solo transform/opacity) ── */
+(function(){
+  var box = document.getElementById('hDust');
+  if (!box || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  for (var i = 0; i < 16; i++) {
+    var d = document.createElement('i'), sz = 2 + Math.random() * 2;
+    d.style.cssText = 'left:' + (Math.random() * 100) + '%;top:' + (20 + Math.random() * 80) + '%;width:' + sz + 'px;height:' + sz + 'px;' +
+      '--o:' + (.3 + Math.random() * .4).toFixed(2) + ';animation-duration:' + (14 + Math.random() * 10).toFixed(1) + 's,' + (2.5 + Math.random() * 3).toFixed(1) + 's;' +
+      'animation-delay:-' + (Math.random() * 20).toFixed(1) + 's,-' + (Math.random() * 4).toFixed(1) + 's';
+    box.appendChild(d);
+  }
 })();
 
 /* ── VIENTO AMBIENTAL ────────────────────────────────── */
