@@ -1470,7 +1470,7 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
    ============================================================ */
 #hero{justify-content:flex-end!important;padding:0 24px!important}
 .h-bg{top:-14%!important;bottom:-14%!important;left:0;right:0;overflow:hidden}
-.hero-drift{position:absolute;inset:0;background:url('fotos-cliente/stock-hero.jpg') center 30%/cover no-repeat;
+.hero-drift{position:absolute;inset:0;background:url('fotos-cliente/hero.jpg') center 38%/cover no-repeat;
   animation:heroDrift 20s ease-in-out infinite alternate;transform-origin:50% 45%}
 @keyframes heroDrift{from{transform:translate(-2%,-1.5%) scale(1.04)}to{transform:translate(2%,1.5%) scale(1.16)}}
 .h-glow{position:absolute;inset:0;z-index:1;pointer-events:none;overflow:hidden;mix-blend-mode:screen}
@@ -2011,11 +2011,16 @@ section:not(#hero):not(#fecha):not(#countdown):not(#dresscode){padding-top:50px!
 
   <div class="wheel-scene" id="wheel-scene">
     <div class="wheel-ring" id="wheel-ring">
-      <div class="wheel-card"><img src="fotos-cliente/stock-foto-1.jpg" alt="Andrea y Uriel"></div>
-      <div class="wheel-card"><img src="fotos-cliente/stock-foto-2.jpg" alt="Andrea y Uriel"></div>
-      <div class="wheel-card"><img src="fotos-cliente/stock-foto-3.jpg" alt="Andrea y Uriel"></div>
-      <div class="wheel-card"><img src="fotos-cliente/stock-foto-4.jpg" alt="Andrea y Uriel"></div>
-      <div class="wheel-card"><img src="fotos-cliente/stock-foto-5.jpg" alt="Andrea y Uriel"></div>
+      <div class="wheel-card"><img src="fotos-cliente/foto-01.jpg" alt="Andrea y Uriel" style="object-position:50% 30%"></div>
+      <div class="wheel-card"><img src="fotos-cliente/foto-02.jpg" alt="Andrea y Uriel" style="object-position:50% 50%"></div>
+      <div class="wheel-card"><img src="fotos-cliente/foto-03.jpg" alt="Andrea y Uriel" style="object-position:50% 40%"></div>
+      <div class="wheel-card"><img src="fotos-cliente/foto-04.jpg" alt="Andrea y Uriel" style="object-position:72% 50%"></div>
+      <div class="wheel-card"><img src="fotos-cliente/foto-05.jpg" alt="Andrea y Uriel" style="object-position:40% 50%"></div>
+      <div class="wheel-card"><img src="fotos-cliente/foto-06.jpg" alt="Andrea y Uriel" style="object-position:50% 40%"></div>
+      <div class="wheel-card"><img src="fotos-cliente/foto-07.jpg" alt="Andrea y Uriel" style="object-position:45% 60%"></div>
+      <div class="wheel-card"><img src="fotos-cliente/foto-08.jpg" alt="Andrea y Uriel" style="object-position:50% 50%"></div>
+      <div class="wheel-card"><img src="fotos-cliente/foto-09.jpg" alt="Andrea y Uriel" style="object-position:55% 50%"></div>
+      <div class="wheel-card"><img src="fotos-cliente/foto-10.jpg" alt="Andrea y Uriel" style="object-position:50% 30%"></div>
     </div>
   </div>
   <p class="gal-hint">Arrastra para girar</p>
@@ -2783,7 +2788,7 @@ function initWheel(){
   if (!ring || cards.length === 0) return;
 
   var n       = cards.length;
-  var radius  = 200;
+  var radius  = Math.max(200, Math.round(n * 196 / (2 * Math.PI)));
   var rot     = 0;
   var vel     = 0;
   var isDrag  = false;
